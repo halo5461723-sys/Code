@@ -2,26 +2,24 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <title>SOMALIA V14</title>
     <link rel="stylesheet" href="style.css">
-    <title>SOMALIA V14 RPG</title>
 </head>
 <body>
-    <div id="auth-screen" class="container">
-        <h1>Đăng Nhập Somalia</h1>
-        <input type="text" id="username" placeholder="Nhập tên nhân vật...">
-        <button onclick="game.login()">Bắt đầu hành trình</button>
+
+    <div id="auth-screen">
+        <h1>SOMALIA V14</h1>
+        <input type="text" id="username" placeholder="Tài khoản">
+        <input type="password" id="password" placeholder="Mật khẩu">
+        <button onclick="login()">Đăng nhập</button>
     </div>
 
-    <div id="game-screen" class="container" style="display: none;">
-        <div class="stats">
-            <p>Nhân vật: <span id="display-name"></span> | Vàng: <span id="display-gold">0</span></p>
-        </div>
+    <div id="game-screen" style="display: none;">
+        <h2 id="welcome-msg"></h2>
         <div class="box">
-            <h3>Quái: <span id="n-name">Chưa tải</span></h3>
-            <p>HP: <span id="n-hp">0</span></p>
-            <button onclick="game.attack()">Tấn công</button>
+            <p>Quái: <span id="n-name">Bù Nhìn</span></p>
+            <button onclick="attack()">Tấn công</button>
         </div>
-        <div class="box" id="shop-list"><h3>Shop</h3></div>
     </div>
 
     <script src="script.js"></script>
