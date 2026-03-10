@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>Game Somalia V14</title>
+    <title>SOMALIA V14 RPG</title>
 </head>
 <body>
-    <div class="box">
-        <h1>SOMALIA V14</h1>
-        <p>Tên quái: <span id="n-name">Chưa tải</span></p>
-        <button id="btn-next">Quái tiếp theo</button>
+    <div id="auth-screen" class="container">
+        <h1>Đăng Nhập Somalia</h1>
+        <input type="text" id="username" placeholder="Nhập tên nhân vật...">
+        <button onclick="game.login()">Bắt đầu hành trình</button>
     </div>
+
+    <div id="game-screen" class="container" style="display: none;">
+        <div class="stats">
+            <p>Nhân vật: <span id="display-name"></span> | Vàng: <span id="display-gold">0</span></p>
+        </div>
+        <div class="box">
+            <h3>Quái: <span id="n-name">Chưa tải</span></h3>
+            <p>HP: <span id="n-hp">0</span></p>
+            <button onclick="game.attack()">Tấn công</button>
+        </div>
+        <div class="box" id="shop-list"><h3>Shop</h3></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
