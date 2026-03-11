@@ -1,48 +1,36 @@
 let p = { name: "", race: "", lv: 1, exp: 0, gold: 0 };
 let monsters = [
-    { n: "Sói Rừng", hp: 30, g: 10 },
-    { n: "Orc Xanh", hp: 80, g: 30 },
-    { n: "Rồng Lửa", hp: 300, g: 100 }
+    { n: "Sói", hp: 40, g: 10 },
+    { n: "Orc", hp: 100, g: 30 },
+    { n: "Rồng", hp: 500, g: 100 }
 ];
 let curM = 0;
-let mHP = 30;
+let mHP = 40;
 
 function handleAuth(type) {
     const user = document.getElementById('u-name').value;
     const pass = document.getElementById('u-pass').value;
     const race = document.getElementById('u-race').value;
-    const storageKey = 'SOMALIA_V14_DATA_' + user;
+    const key = 'SOMALIA_V14_DATA_' + user;
 
-    if (!user || !pass) {
-        alert("Phải nhập cả tên và mật khẩu!");
-        return;
-    }
+    if (!user || !pass) return alert("Nhập đủ tài khoản/mật khẩu!");
 
     if (type === 'reg') {
-        if (localStorage.getItem(storageKey)) {
-            alert("Tên này có người dùng rồi!");
-        } else {
-            let newData = { name: user, pass: pass, race: race, lv: 1, exp: 0, gold: 0 };
-            localStorage.setItem(storageKey, JSON.stringify(newData));
-            alert("Đăng ký xong! Giờ bấm Đăng nhập nhé.");
-        }
+        if (localStorage.getItem(key)) return alert("Đã có tên này!");
+        let data = { name: user, pass: pass, race: race, lv: 1, exp: 0, gold: 0 };
+        localStorage.setItem(key, JSON.stringify(data));
+        alert("Đăng ký xong! Hãy Đăng nhập.");
     } else {
-        const saved = localStorage.getItem(storageKey);
-        if (!saved) {
-            alert("Không tìm thấy tài khoản này!");
-        } else {
-            const data = JSON.parse(saved);
-            if (data.pass === pass) {
-                p = data;
-                start();
-            } else {
-                alert("Sai mật khẩu rồi!");
-            }
-        }
+        const saved = localStorage.getItem(key);
+        if (!saved) return alert("Không có tài khoản!");
+        const data = JSON.parse(saved);
+        if (data.pass !== pass) return alert("Sai mật khẩu!");
+        p = data;
+        startGame();
     }
 }
 
-function start() {
+function startGame() {
     document.getElementById('auth-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
     renderShop();
@@ -56,20 +44,18 @@ function updateUI() {
     document.getElementById('txt-gold').innerText = Math.floor(p.gold);
     document.getElementById('txt-m-name').innerText = monsters[curM].n;
     document.getElementById('txt-m-hp').innerText = mHP;
-    
-    // Lưu tự động mỗi khi có thay đổi
     localStorage.setItem('SOMALIA_V14_DATA_' + p.name, JSON.stringify(p));
 }
 
 function doAttack() {
-    let dmg = (p.race === "Chiến Binh") ? 15 : 10;
+    let dmg = p.race === "Chiến Binh" ? 20 : 10;
     mHP -= dmg;
     if (mHP <= 0) {
-        let bonus = (p.race === "Pháp Sư") ? 1.5 : 1;
-        p.gold += monsters[curM].g * bonus;
-        p.exp += 20;
+        let g = monsters[curM].g * (p.race === "Pháp Sư" ? 1.5 : 1);
+        p.gold += g;
+        p.exp += 30;
         if (p.exp >= 100) { p.lv++; p.exp = 0; alert("LÊN CẤP!"); }
-        alert("Thắng rồi! Nhận vàng.");
+        alert("Thắng! Nhận " + g + " vàng.");
         changeMonster();
     }
     updateUI();
@@ -82,20 +68,13 @@ function changeMonster() {
 }
 
 function renderShop() {
-    const items = [ {n: "Kiếm Sắt", g: 50}, {n: "Trượng Cổ", g: 100} ];
-    document.getElementById('shop-list').innerHTML = items.map(i => `
-        <div style="margin:5px; border-bottom:1px solid #444; padding:5px;">
-            ${i.n} - ${i.g}g <button onclick="buy('${i.g}')">Mua</button>
-        </div>
+    const items = [{n: "Kiếm", g: 50}, {n: "Giáp", g: 100}];
+    document.getElementById('shop-list').innerHTML = "<h3>Shop</h3>" + items.map(i => `
+        <div>${i.n} - ${i.g}g <button onclick="buy(${i.g})" style="width:auto; padding:2px 10px;">Mua</button></div>
     `).join('');
 }
 
-function buy(cost) {
-    if (p.gold >= cost) {
-        p.gold -= cost;
-        alert("Mua thành công!");
-        updateUI();
-    } else {
-        alert("Hết tiền rồi!");
-    }
+function buy(g) {
+    if (p.gold >= g) { p.gold -= g; alert("Mua xong!"); updateUI(); }
+    else alert("Thiếu tiền!");
 }
