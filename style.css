@@ -1,15 +1,9 @@
-body { background: #0f0f0f; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding-top: 50px; }
-.container { background: #1a1a1a; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); width: 600px; text-align: center; }
-input, select { width: 80%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #333; background: #222; color: #fff; }
-button { padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; margin: 5px; }
-.btn-group button { background: #3498db; color: white; }
-.btn-atk { background: #e74c3c; color: white; width: 100%; font-size: 1.2rem; }
-.btn-next { background: #95a5a6; color: white; margin-top: 10px; }
-.stats-bar { background: #2c3e50; padding: 10px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-around; font-size: 0.9rem; }
-.exp-container { background: #333; height: 10px; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
-#exp-bar { background: #f1c40f; height: 100%; transition: 0.5s; }
-.main-layout { display: flex; gap: 20px; }
-.box { flex: 1; background: #252525; padding: 15px; border-radius: 10px; border: 1px solid #333; }
-.shop-item { background: #333; padding: 8px; margin: 5px 0; border-radius: 5px; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
-.shop-item button { padding: 5px 10px; font-size: 0.7rem; background: #27ae60; }
+body { background: #121212; color: white; font-family: sans-serif; text-align: center; padding-top: 30px; }
+.container { background: #1e1e1e; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; margin: auto; border: 1px solid #333; }
+input, select { width: 80%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #444; background: #252525; color: white; }
+button { padding: 10px 15px; margin: 5px; cursor: pointer; border-radius: 5px; border: none; background: #3498db; color: white; font-weight: bold; }
+button:hover { background: #2980b9; }
+.btn-atk { background: #e74c3c; width: 100%; font-size: 1.2em; }
+.header { background: #2c3e50; padding: 10px; border-radius: 5px; margin-bottom: 20px; }
+.monster-zone, .shop-zone { background: #252525; padding: 15px; border-radius: 8px; margin: 10px 0; border: 1px solid #333; }
 
