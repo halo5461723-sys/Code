@@ -1,9 +1,8 @@
-body { background: #121212; color: white; font-family: sans-serif; text-align: center; padding-top: 30px; }
-.container { background: #1e1e1e; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; margin: auto; border: 1px solid #333; }
-input, select { width: 80%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #444; background: #252525; color: white; }
-button { padding: 10px 15px; margin: 5px; cursor: pointer; border-radius: 5px; border: none; background: #3498db; color: white; font-weight: bold; }
-button:hover { background: #2980b9; }
-.btn-atk { background: #e74c3c; width: 100%; font-size: 1.2em; }
-.header { background: #2c3e50; padding: 10px; border-radius: 5px; margin-bottom: 20px; }
-.monster-zone, .shop-zone { background: #252525; padding: 15px; border-radius: 8px; margin: 10px 0; border: 1px solid #333; }
+body { background: #121212; color: white; font-family: sans-serif; text-align: center; }
+.container { background: #1e1e1e; padding: 20px; border-radius: 10px; max-width: 400px; margin: 40px auto; border: 1px solid #333; }
+input, select, button { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; }
+button { background: #3498db; color: white; border: none; cursor: pointer; font-weight: bold; }
+.btn-atk { background: #e74c3c; }
+.header { background: #2c3e50; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+.box { background: #252525; padding: 15px; border-radius: 8px; border: 1px solid #444; margin-top: 10px; }
 
