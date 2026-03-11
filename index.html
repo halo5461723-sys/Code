@@ -2,42 +2,34 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>SOMALIA V14 - RPG</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <title>SOMALIA V14</title>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
     <div id="auth-screen" class="container">
         <h1>SOMALIA V14</h1>
-        <input type="text" id="u-name" placeholder="Tên tài khoản...">
-        <input type="password" id="u-pass" placeholder="Mật khẩu...">
+        <input type="text" id="u-name" placeholder="Tài khoản">
+        <input type="password" id="u-pass" placeholder="Mật khẩu">
         <select id="u-race">
-            <option value="Chiến Binh">Tộc Chiến Binh (Sát thương)</option>
-            <option value="Pháp Sư">Tộc Pháp Sư (Nhiều vàng)</option>
+            <option value="Chiến Binh">Chiến Binh</option>
+            <option value="Pháp Sư">Pháp Sư</option>
         </select>
-        <div style="margin-top: 10px;">
-            <button onclick="handleAuth('reg')">Đăng ký mới</button>
-            <button onclick="handleAuth('login')">Đăng nhập</button>
-        </div>
+        <button onclick="handleAuth('reg')">Đăng ký</button>
+        <button onclick="handleAuth('login')">Đăng nhập</button>
     </div>
 
     <div id="game-screen" class="container" style="display: none;">
         <div class="header">
             <span id="txt-user"></span> | Lv: <b id="txt-lv">1</b> | Vàng: <b id="txt-gold">0</b>
         </div>
-        
-        <div class="monster-zone">
-            <h2 id="txt-m-name">Quái Vật</h2>
+        <div class="box">
+            <h2 id="txt-m-name">Quái</h2>
             <p>HP: <span id="txt-m-hp">0</span></p>
-            <button class="btn-atk" onclick="doAttack()">TẤN CÔNG ⚔️</button>
-            <button onclick="changeMonster()">ĐỔI QUÁI ➡️</button>
+            <button class="btn-atk" onclick="doAttack()">TẤN CÔNG</button>
+            <button onclick="changeMonster()">ĐỔI QUÁI</button>
         </div>
-
-        <div class="shop-zone">
-            <h3>Cửa hàng vật phẩm</h3>
-            <div id="shop-list"></div>
-        </div>
+        <div class="box" id="shop-list"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
 </body>
 </html>
