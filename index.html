@@ -2,51 +2,42 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>SOMALIA V14 - RPG Edition</title>
+    <title>SOMALIA V14 - RPG</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="auth-screen" class="container">
         <h1>SOMALIA V14</h1>
-        <p>Hệ thống Đăng ký & Đăng nhập</p>
-        <input type="text" id="u-input" placeholder="Tài khoản">
-        <input type="password" id="p-input" placeholder="Mật khẩu">
-        <select id="r-input">
-            <option value="Chiến Binh">Tộc Chiến Binh (Mạnh mẽ)</option>
-            <option value="Pháp Sư">Tộc Pháp Sư (Nhiều Vàng)</option>
+        <input type="text" id="u-name" placeholder="Tên tài khoản...">
+        <input type="password" id="u-pass" placeholder="Mật khẩu...">
+        <select id="u-race">
+            <option value="Chiến Binh">Tộc Chiến Binh (Sát thương)</option>
+            <option value="Pháp Sư">Tộc Pháp Sư (Nhiều vàng)</option>
         </select>
-        <div class="btn-group">
-            <button onclick="auth('reg')">Đăng ký</button>
-            <button onclick="auth('login')">Đăng nhập</button>
+        <div style="margin-top: 10px;">
+            <button onclick="handleAuth('reg')">Đăng ký mới</button>
+            <button onclick="handleAuth('login')">Đăng nhập</button>
         </div>
     </div>
 
     <div id="game-screen" class="container" style="display: none;">
-        <div class="stats-bar">
-            <span>👤 <b id="s-user"></b></span> | 
-            <span>Tộc: <b id="s-race"></b></span> | 
-            <span>Cấp: <b id="s-lv">1</b></span> | 
-            <span>Vàng: <b id="s-gold">0</b>g</span>
+        <div class="header">
+            <span id="txt-user"></span> | Lv: <b id="txt-lv">1</b> | Vàng: <b id="txt-gold">0</b>
         </div>
         
-        <div class="exp-container">
-            <div id="exp-bar" style="width: 0%"></div>
+        <div class="monster-zone">
+            <h2 id="txt-m-name">Quái Vật</h2>
+            <p>HP: <span id="txt-m-hp">0</span></p>
+            <button class="btn-atk" onclick="doAttack()">TẤN CÔNG ⚔️</button>
+            <button onclick="changeMonster()">ĐỔI QUÁI ➡️</button>
         </div>
 
-        <div class="main-layout">
-            <div class="box monster-box">
-                <h2 id="m-name">Đang tìm quái...</h2>
-                <p>Máu: <span id="m-hp">0</span> / <span id="m-maxhp">0</span></p>
-                <button class="btn-atk" onclick="action.attack()">TẤN CÔNG ⚔️</button>
-                <button class="btn-next" onclick="action.next()">ĐỔI QUÁI ➡️</button>
-            </div>
-
-            <div class="box shop-box">
-                <h2>Cửa Hàng 💰</h2>
-                <div id="shop-items"></div>
-            </div>
+        <div class="shop-zone">
+            <h3>Cửa hàng vật phẩm</h3>
+            <div id="shop-list"></div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
