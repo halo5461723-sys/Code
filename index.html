@@ -2,26 +2,51 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>SOMALIA V14</title>
+    <title>SOMALIA V14 - RPG Edition</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="auth-screen">
+    <div id="auth-screen" class="container">
         <h1>SOMALIA V14</h1>
-        <input type="text" id="username" placeholder="Tài khoản">
-        <input type="password" id="password" placeholder="Mật khẩu">
-        <button onclick="login()">Đăng nhập</button>
-    </div>
-
-    <div id="game-screen" style="display: none;">
-        <h2 id="welcome-msg"></h2>
-        <div class="box">
-            <p>Quái: <span id="n-name">Bù Nhìn</span></p>
-            <button onclick="attack()">Tấn công</button>
+        <p>Hệ thống Đăng ký & Đăng nhập</p>
+        <input type="text" id="u-input" placeholder="Tài khoản">
+        <input type="password" id="p-input" placeholder="Mật khẩu">
+        <select id="r-input">
+            <option value="Chiến Binh">Tộc Chiến Binh (Mạnh mẽ)</option>
+            <option value="Pháp Sư">Tộc Pháp Sư (Nhiều Vàng)</option>
+        </select>
+        <div class="btn-group">
+            <button onclick="auth('reg')">Đăng ký</button>
+            <button onclick="auth('login')">Đăng nhập</button>
         </div>
     </div>
 
+    <div id="game-screen" class="container" style="display: none;">
+        <div class="stats-bar">
+            <span>👤 <b id="s-user"></b></span> | 
+            <span>Tộc: <b id="s-race"></b></span> | 
+            <span>Cấp: <b id="s-lv">1</b></span> | 
+            <span>Vàng: <b id="s-gold">0</b>g</span>
+        </div>
+        
+        <div class="exp-container">
+            <div id="exp-bar" style="width: 0%"></div>
+        </div>
+
+        <div class="main-layout">
+            <div class="box monster-box">
+                <h2 id="m-name">Đang tìm quái...</h2>
+                <p>Máu: <span id="m-hp">0</span> / <span id="m-maxhp">0</span></p>
+                <button class="btn-atk" onclick="action.attack()">TẤN CÔNG ⚔️</button>
+                <button class="btn-next" onclick="action.next()">ĐỔI QUÁI ➡️</button>
+            </div>
+
+            <div class="box shop-box">
+                <h2>Cửa Hàng 💰</h2>
+                <div id="shop-items"></div>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
